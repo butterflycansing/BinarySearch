@@ -18,9 +18,9 @@ public:
           return mid;
         else
         {
-            if(A[mid]>A[0]) // left part is soreted
+            if(A[mid]>A[start]) // left part is soreted
             {
-                if(A[0]<=target&&target<A[mid])
+                if(A[start]<=target&&target<A[mid])
                   return find(A,start,mid-1,target);
                 else
                   return find(A,mid+1,end,target);
