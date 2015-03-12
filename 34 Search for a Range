@@ -1,0 +1,75 @@
+class Solution {
+public:
+    vector<int> searchRange(int A[], int n, int target) 
+    {
+         int start = 0;
+         int end = n-1;
+        
+         int mid;
+         
+         int index=-1;
+         
+         while(start<=end)
+         {
+               
+             mid = (start+end)/2;
+             
+             if(A[mid]==target)
+             {
+                 index = mid;
+                 break;
+             }
+             
+             if(target<A[mid])
+             {
+                 end = mid-1;
+             }
+             if(A[mid]<target)
+             {
+                 start=mid+1;
+             }
+             
+         }
+             
+               
+         int left=0;
+         int right=0;
+         
+         vector<int> res;
+         
+         if(index==-1)
+         {
+             res.push_back(-1);
+             res.push_back(-1);
+             return res;
+         }
+         
+         start = 0; end = index;
+         while(start<end)
+         {
+             mid = (start+end)/2;
+             if(A[mid]==target)
+               end=mid;
+             if(A[mid]<target)
+               start=mid+1;
+         }
+         left = start;
+         
+         start = index; end = n-1;
+         while(start<end)
+         {
+             mid = (start+end)/2+1;
+             if(A[mid]==target)
+               start=mid;
+             if(A[mid]>target)
+               end=mid-1;
+         }
+         right = start;
+         
+         res.push_back(left);
+         res.push_back(right);
+         return res;
+         
+        
+    }
+};
