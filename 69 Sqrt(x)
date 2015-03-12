@@ -1,0 +1,27 @@
+int sqrt(int x) 
+    {
+       if(x==0) return 0;
+       if(x==1) return 1;
+        
+       long int left = 0;
+       long int right = x;
+       
+       long int mid;
+       long int sq;
+       
+       while(right-left>1)
+       {
+           mid = (left+right)/2;
+           sq = mid*mid;
+           if(sq==x)
+             return mid;
+           else
+             if(sq<x)
+               left=mid;
+             else
+               right=mid;
+       }
+       
+       return left;
+       
+    }
