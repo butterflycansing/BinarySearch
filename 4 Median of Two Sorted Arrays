@@ -1,0 +1,43 @@
+class Solution {
+public:
+    double findMedianSortedArrays(int A[], int m, int B[], int n) 
+    {
+        if((m+n)%2==1)
+          return findKth(A,m,B,n,(m+n)/2+1);
+        else
+          return (findKth(A,m,B,n,(m+n)/2)+findKth(A,m,B,n,(m+n)/2+1) )/2.0;
+        
+    }
+    
+    double findKth(int A[],int m,int B[],int n, int k)
+    {
+        if(m>n)
+          return findKth(B,n,A,m,k);
+          
+         if(m==0)
+          return B[k-1]; 
+        
+         if(k==1)
+          return min(A[0],B[0]);
+          
+        int partA=k/2;
+        int va = 0;
+        if(partA>m)
+           partA=m;
+        
+        va = A[partA-1];
+        
+        int partB = k - partA;
+        int vb = B[partB-1];
+        
+        if(va==vb)
+          return va;
+          
+        if(va<vb)
+         return findKth(&A[partA],m-partA,B,n,k-partA);
+         
+        if(va>vb)
+         return findKth(A,m,&B[partB],n-partB,k-partB);
+        
+    }
+};
