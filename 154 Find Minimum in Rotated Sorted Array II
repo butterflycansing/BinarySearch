@@ -1,1 +1,44 @@
 int
+class Solution {
+public:
+    int findMin(vector<int> &num) 
+    {
+        int n = num.size();
+        if(n==1) return num[0];
+        
+        int start = 0;
+        int end = n-1;
+        
+        int mid;
+        
+        while(start<=end)
+        {
+            if(start==end)
+              return num[start];
+              
+            mid = (start+end)/2;
+
+            if(num[mid]==num[end])
+            {
+                end--;
+                continue;
+            }
+            if(num[mid]>num[end]) // right part is not sorted. min is in right part 
+            {
+                start = mid+1;
+                continue;
+            }
+            if(num[mid]<num[end]) // left part is not sorted. min is in left part.
+              { end = mid;
+                continue;
+              }
+            
+            
+        }
+        
+        /*
+        sort(num.begin(),num.end());
+        return num[0];
+        */
+    }
+};
