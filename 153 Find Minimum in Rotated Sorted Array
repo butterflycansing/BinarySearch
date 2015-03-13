@@ -28,12 +28,12 @@ public:
             if(num[mid]<num[mid-1]&&num[mid]<num[mid+1])  // check whether mid is minimum
               return num[mid];
             
-            if(num[mid]>=num[end]) // right part is not sorted. min is in right part 
+            if(num[mid]>num[end]) // right part is not sorted. min is in right part 
             {
                 start = mid+1;
                 continue;
             }
-            if(num[mid]<=num[end]) // left part is not sorted. min is in left part.
+            if(num[mid]<num[end]) // left part is not sorted. min is in left part.
               { end = mid-1;
                 continue;
               }
