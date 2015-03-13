@@ -33,7 +33,7 @@ public:
                 start = mid+1;
                 continue;
             }
-            if(num[mid]<=num[end]) // left part is sorted. min is in left part.
+            if(num[mid]<=num[end]) // left part is not sorted. min is in left part.
               { end = mid-1;
                 continue;
               }
